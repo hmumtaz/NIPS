@@ -1,0 +1,6 @@
+*.config
+packages
+NIPS/Properties
+NIPS/obj
+NIPS/bin
+.dll
