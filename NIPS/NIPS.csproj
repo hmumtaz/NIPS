@@ -333,6 +333,7 @@
     <Content Include="Models\NIPSDatabaseModel.edmx.diagram">
       <DependentUpon>NIPSDatabaseModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\nips - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NIPS20180612032848 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\home.js" />
@@ -348,7 +349,9 @@
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\registration.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

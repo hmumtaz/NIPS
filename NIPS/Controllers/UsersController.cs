@@ -157,6 +157,15 @@ namespace NIPS.Controllers
                     int amount = ledgerEntry.Amount;
                     string reason = ledgerEntry.Reason;
                     var giverId = entities.AspNetUsers.FirstOrDefault(u => u.UserName == giver).Id;
+                    var ledgerKey = 0;
+                    try
+                    {
+                        ledgerKey = entities.Ledgers.Select(l => l.LedgerID).Max() + 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        ledgerKey = 0;
+                    }
                     var giverAccessLevel = entities.Users.FirstOrDefault(u => u.ID == giverId).AccessLevel;
                     if (giverAccessLevel > 0)
                     {
@@ -166,6 +175,7 @@ namespace NIPS.Controllers
                         getterObj.TotalPoints += amount;
                         getterObj.SemesterPoints += amount;
                         getterObj.WeekPoints += amount;
+                        ledgerEntry.LedgerID = ledgerKey;
                         ledgerEntry.GiverID = giverId;
                         ledgerEntry.GetterID = getterObj.ID;
                         entities.Ledgers.Add(ledgerEntry);
@@ -246,7 +256,6 @@ namespace NIPS.Controllers
                 return Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
         }
-
 
         [Route("DeleteUser")]
         public HttpResponseMessage DeleteUser(DeleteUserData deleteInfo)

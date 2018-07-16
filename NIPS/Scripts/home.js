@@ -164,8 +164,8 @@ $(document).ready(function () {
                 $("#allPtsDiv").addClass("hidden");
                 $("#accessLvlDiv").addClass("hidden");
                 $("#ledgerDiv").removeClass("hidden");
+                $('#ledgerBody').empty();
                 $.each(data, function (index, value) {
-                    $('#ledgerBody').empty();
                     var row = $('<tr><td>' + value.LedgerID + '</td><td>'
                         + value.GiverID + '</td><td>'
                         + value.GetterID + '</td><td>'
